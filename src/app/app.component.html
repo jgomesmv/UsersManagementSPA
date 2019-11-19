@@ -1,4 +1,14 @@
-<users-list [users]=users></users-list>
-
-
-<router-outlet></router-outlet>
+<article>
+  <header class="c-app__header">
+    <h1 class="c-app__title">Header</h1>
+  </header>
+  <section class="c-app__body">
+    <div class="c-app__adduserContainer">
+      <user-form class="c-app__addUserForm"></user-form>
+    </div>
+    <users-list [users]=users></users-list>
+  </section>
+  <footer class="c-app__footer">
+    <p class="c-app__footerText">Footer</p>
+  </footer>
+</article>
