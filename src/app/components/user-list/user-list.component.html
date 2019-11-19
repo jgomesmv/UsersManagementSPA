@@ -1,0 +1,14 @@
+<section>
+  <a
+    class="c-userListItem__button"
+    (click)=onEditAll()>
+    Edit All
+  </a>
+  <a
+    class="c-userListItem__button"
+    (click)=onDeleteAll()>
+    Delete All
+  </a>
+</section>
+
+<user-list-item *ngFor="let user of users" [user]=user [editMode]=editAllMode></user-list-item>

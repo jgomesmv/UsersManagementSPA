@@ -1,4 +1,4 @@
-<section class="c-userListItem__body">
+<section *ngIf=!editMode class="c-userListItem__body">
   <div class="c-userListItem__name">{{user.name}}</div>
   <div class="c-userListItem__buttons">
     <a
@@ -13,3 +13,10 @@
     </a>
   </div>
 </section>
+
+<user-form
+  *ngIf=editMode
+  [user]=user
+  [editMode]=true
+  (userSubmited)=onUserUpdated($event)>
+</user-form>
