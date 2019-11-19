@@ -27,4 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.usersDataSource.disconnect();
   }
+
+  public onAddUser(user: UserModel): void {
+    this.usersDataSource.addUser(user);
+  }
 }

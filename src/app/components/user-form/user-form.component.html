@@ -1,6 +1,14 @@
 <h2 *ngIf=!editMode class="c-userForm__title">Add new user</h2>
 <form class="c-userForm__form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <input class="c-userForm__nameInput" type="text" formControlName="name">
+  <input
+    class="c-userForm__nameInput"
+    type="text"
+    formControlName="name">
 
-  <button class="c-userForm__button" type="submit" [disabled]="!userForm.valid">Submit</button>
+  <button
+    class="c-userForm__button"
+    type="submit"
+    [disabled]="!userForm.valid">
+      {{editMode ? "Save" : "Add"}}
+    </button>
 </form>

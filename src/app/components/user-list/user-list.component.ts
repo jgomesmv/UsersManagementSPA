@@ -5,7 +5,8 @@ import { UserModel } from 'src/app/models/user/user.model';
 @Component({
   selector: 'users-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
+  host: {class: 'c-usersList'}
 })
 export class UserListComponent implements OnInit {
   @Input() users: UserModel[] = [];
