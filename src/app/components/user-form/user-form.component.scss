@@ -3,6 +3,7 @@
     display: flex;
     height: 100%;
     flex-direction: column;
+    justify-content: center;
   }
 
   &__title {
@@ -19,14 +20,18 @@
 
   &__nameInput {
     width: 80%;
+    height: 30px;
     max-width: 300px;
   }
 
   &__button {
-    height: 25px;
-    width: 60px;
-    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 37px;
+    width: 88px;
     padding: 5px;
+    margin: 0 5px;
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;

@@ -46,6 +46,10 @@ export class UsersDataSource {
     this.updateUsers(users);
   }
 
+  public removeAllUsers(): void {
+    this.updateUsers([]);
+  }
+
   public updateUser(user: UserModel): void {
     const users = this.usersSubject.value.filter(u => u.name !== user.previousName);
     users.push(user);

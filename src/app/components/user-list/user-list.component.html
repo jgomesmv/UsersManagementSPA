@@ -1,14 +1,22 @@
-<section>
+<section *ngIf="users.length > 0" class="c-usersList__buttons">
   <a
+    *ngIf="mode !== viewModes.editAllMode"
     class="c-usersList__button"
     (click)=onEditAll()>
     Edit All
   </a>
   <a
+    *ngIf="mode !== viewModes.editAllMode"
     class="c-usersList__button"
     (click)=onDeleteAll()>
     Delete All
   </a>
+  <a
+    *ngIf="mode === viewModes.editAllMode"
+    class="c-usersList__button"
+    (click)=onSaveAll()>
+    Save All
+  </a>
 </section>
 
-<user-list-item *ngFor="let user of users" [user]=user [editMode]=editAllMode></user-list-item>
+<user-list-item *ngFor="let user of users" [user]=user [mode]=mode></user-list-item>

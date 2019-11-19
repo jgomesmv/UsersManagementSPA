@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { UserModel } from 'src/app/models/user/user.model';
 import { UsersDataSource } from 'src/app/data-sources/users/users.data-source';
+import { ViewModeEnum } from 'src/app/enums/view-mode.enum';
 
 @Component({
   selector: 'user-list-item',
@@ -11,7 +12,8 @@ import { UsersDataSource } from 'src/app/data-sources/users/users.data-source';
 })
 export class UserListItemComponent implements OnInit {
   @Input() public user: UserModel;
-  @Input() public editMode = false;
+  @Input() mode: ViewModeEnum = ViewModeEnum.view;
+  public viewModes = ViewModeEnum;
 
   constructor(private usersDataSource: UsersDataSource) { }
 
@@ -19,7 +21,7 @@ export class UserListItemComponent implements OnInit {
   }
 
   public onEdit(): void {
-    this.editMode = true;
+    this.mode = this.viewModes.editMode;
   }
 
   public onDelete(): void {
@@ -29,6 +31,6 @@ export class UserListItemComponent implements OnInit {
   public onUserUpdated(user: UserModel): void {
     user.previousName = this.user.name;
     this.usersDataSource.updateUser(user);
-    this.editMode = false;
+    this.mode = this.viewModes.view;
   }
 }

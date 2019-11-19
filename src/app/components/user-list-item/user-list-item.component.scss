@@ -23,14 +23,19 @@
   }
 
   &__buttons {
+    display: flex;
+    flex-direction: row;
     max-width: 50%;
     min-width: 100px;
   }
 
   &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 25px;
-    width: 50px;
-    margin: 5px;
+    width: 76px;
+    margin: 0 8px;
     padding: 5px;
     background-color: white;
     border: 1px solid black;

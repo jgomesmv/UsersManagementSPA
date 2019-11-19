@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { UserModel } from 'src/app/models/user/user.model';
+import { UsersDataSource } from 'src/app/data-sources/users/users.data-source';
+import { ViewModeEnum } from 'src/app/enums/view-mode.enum';
 
 @Component({
   selector: 'users-list',
@@ -10,16 +12,24 @@ import { UserModel } from 'src/app/models/user/user.model';
 })
 export class UserListComponent implements OnInit {
   @Input() users: UserModel[] = [];
-  public editAllMode = false;
+  public mode: ViewModeEnum = ViewModeEnum.view;
+  public viewModes = ViewModeEnum;
 
-  constructor() { }
+  constructor(private usersDataSource: UsersDataSource) { }
 
   ngOnInit() {
   }
 
   public onEditAll(): void {
-    this.editAllMode = true;
+    this.mode = ViewModeEnum.editAllMode;
   }
 
-  public onDeleteAll(): void {}
+  public onDeleteAll(): void {
+    this.usersDataSource.removeAllUsers();
+  }
+
+  public onSaveAll(): void {
+    // TODO
+    this.mode = ViewModeEnum.view;
+  }
 }
