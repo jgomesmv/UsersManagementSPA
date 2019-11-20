@@ -1,19 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
-import { ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { UserFormComponent } from "./components/user-form/user-form.component";
-import { UserListComponent } from "./components/user-list/user-list.component";
-import { UserListItemComponent } from "./components/user-list-item/user-list-item.component";
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
 import { UsersDataSource } from './data-sources/users/users.data-source';
 import { of } from 'rxjs';
 
 describe('AppComponent', () => {
+  const testUser = {name: 'testUser'};
+
   const usersDataSourceMock = {
-    connect: () => of([]),
+    connect: () => of([testUser]),
     disconnect: () => {},
     addUser: (user: any) => {}
   };
@@ -26,9 +27,7 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         BrowserModule,
-        ReactiveFormsModule,
-        HttpClientModule
-
+        ReactiveFormsModule
       ],
       declarations: [
         AppComponent,
@@ -54,7 +53,22 @@ describe('AppComponent', () => {
       TestBed.get(UsersDataSource),
       'addUser'
     );
-    app.onAddUser({name: 'textUser'});
+    app.onAddUser(testUser);
     expect(addUserSpy).toHaveBeenCalled();
+  });
+
+  it('gets users on init', () => {
+    app.ngOnInit();
+    expect(app.users).toContain(testUser);
+  });
+
+  it('disconnects on destroy', () => {
+    const disconnectSpy = spyOn(
+      TestBed.get(UsersDataSource),
+      'disconnect'
+    );
+
+    app.ngOnDestroy();
+    expect(disconnectSpy).toHaveBeenCalled();
   });
 });
