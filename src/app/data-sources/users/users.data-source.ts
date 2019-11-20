@@ -41,6 +41,12 @@ export class UsersDataSource {
     this.updateUsers(users);
   }
 
+  public updateUser(user: UserModel): void {
+    const users = this.usersSubject.value.filter(u => u.name !== user.previousName);
+    users.push(user);
+    this.updateUsers(users);
+  }
+
   public removeUser(user: UserModel): void {
     const users = this.usersSubject.value.filter(u => u.name !== user.name);
     this.updateUsers(users);
@@ -48,12 +54,6 @@ export class UsersDataSource {
 
   public removeAllUsers(): void {
     this.updateUsers([]);
-  }
-
-  public updateUser(user: UserModel): void {
-    const users = this.usersSubject.value.filter(u => u.name !== user.previousName);
-    users.push(user);
-    this.updateUsers(users);
   }
 
   private getUsers(): void {
