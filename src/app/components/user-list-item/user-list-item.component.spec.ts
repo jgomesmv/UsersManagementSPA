@@ -20,7 +20,6 @@ describe('UserListItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        BrowserModule,
         ReactiveFormsModule
       ],
       declarations: [

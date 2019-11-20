@@ -18,7 +18,6 @@ describe('UserListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        BrowserModule,
         ReactiveFormsModule
       ],
       declarations: [
