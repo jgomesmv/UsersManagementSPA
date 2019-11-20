@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { BrowserModule } from "@angular/platform-browser";
-import { ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from '../user-form/user-form.component';
 import { UserListItemComponent } from './user-list-item.component';
-import { UsersDataSource } from "src/app/data-sources/users/users.data-source";
-import { of } from "rxjs";
+import { UsersDataSource } from 'src/app/data-sources/users/users.data-source';
 
 describe('UserListItemComponent', () => {
   let component: UserListItemComponent;
